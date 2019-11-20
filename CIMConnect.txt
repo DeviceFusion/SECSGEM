@@ -1,0 +1,106 @@
+
+
+[COMMON EVENTS]
+#id=name, description, , list of associated data variables
+#Add your equipment definitions here
+
+# 200 event range = EquipmentProcess State Change Events
+#200=ProcessStateToSETUP,A sample user defined collection event for the Processing State Machine,
+#201=ProcessStateToEXECUTING,A sample user defined collection event for the Processing State Machine,
+#202=ProcessStateToIDLE,A sample user defined collection event for the Processing State Machine,
+
+200=ProcessStateToINITIALIZING,Equipmenttransitioned to initialization mode,
+201=ProcessStateToIDLE,Equipmenttransitioned to idle mode,
+202=ProcessStateToEDITING,Equipmenttransitioned to edit mode, SelectedRecipe
+203=ProcessStateToPROCESSING,Equipmenttransitioned to processing mode, SelectedRecipe
+204=ProcessStateToPAUSED,Equipmenttransitioned to paused mode, 
+205=ProcessStateToLOCKED,Equipmenttransitioned to locked mode,  
+206=ProcessStateToFAULT,Equipmenttransitioned to a operational fault mode, ErrorMessage
+207=ProcessStateToUNKNOWN ,Equipmenttransitioned to an unknown operational mode, ErrorMessage
+
+# 1000 event range =  EquipmentEvents
+1001=LoginEvent,Operator Logged In,UserLevel
+1002=ShutDownEvent,Operator Logged Out/Equipment Shutdown, UserLevel
+1003=RecipeListChangedEvent,EquipmentProcess Recipe List Changed,RecipeList
+1004=RecipeChangedEvent,EquipmentProcess Recipe Changed,SelectedRecipe
+1005=ControlStateChangedEvent,Control Power On/Off Status,ControlState
+1006=StatusChangedEvent,EquipmentProcess Runtime Data Update,BathTemp, FlowRate ,Conductivity, VoltageFeedback ,CurrentFeedback,VoltageSetPoint ,CurrentSetPoint ,AgitatorSpeed ,ChillerState ,ProcessCount,StepID ,StepTime ,ProcessTime ,SelectedRecipe ,TemperatureSP, TemperatureLowSP, TemperatureHighSP, FlowRateLowSP, FlowRateHighSP
+1007=ProcessCompletedEvent,EquipmentProcess Completed,SelectedRecipe,ProcessCount
+
+# 2000 event range = EquipmentAlarm Events
+2001=TempOutOfRangeSET,Coolant Temp Out OF Range Alarm SET collection event,TemperatureLowSP, TemperatureHighSP, BathTemp
+2002=TempOutOfRangeCLEAR,Coolant Temp Out OF Range Alarm CLEAR collection event,TemperatureLowSP, TemperatureHighSP, BathTemp
+2003=FlowRateLowSET,Low Coolant Flow Rate Alarm SET collection event,FlowRateLowSP, FlowRate
+2004=FlowRateLowCLEAR,Low Coolant Flow Rate Alarm CLEAR collection event,FlowRateLowSP, FlowRate
+2005=FlowRateHighSET,High Coolant Flow Rate Alarm SET collection event, FlowRateHighSP, FlowRate
+2006=FlowRateHighCLEAR,High Coolant Flow Rate Alarm CLEAR collection event, FlowRateHighSP, FlowRate
+2007=EStopSET,Equipment Emergency Stop Alarm SET collection event,
+2008=EStopCLEAR,Equipment Emergency Stop Alarm CLEAR collection event,
+2009=IntenralCommsErrorSET,Intenral Communications Error Alarm SET collection event,ICommErrorMessage
+2010=IntenralCommsErrorCLEAR,Intenral Communications Error Alarm CLEAR collection event,ICommErrorMessage
+2011=OtherErrorSET,Equipment Operation Error Alarm SET collection event,ErrorMessage
+2012=OtherErrorCLEAR,Equipment Operation Error Alarm CLEAR collection event,ErrorMessage
+
+
+[ALARMS]
+#id=name, description, text, setEventID, clearEventID, alarm code (ALCD), 
+#Add your equipment definitions here
+# 400 ID range = EquipmentAlarms
+401=TempOutOfRange,Coolant Temperature Out Of Range,Coolant Over Temperature ,2001,2002,0,, 
+402=FlowRateLow,Low Coolant Flow Rate,Low Coolant Flow Rate ,2003,2004,0,, 
+403=FlowRateHigh,High Coolant Flow Rate,High Coolant Flow Rate,2005,2006,0,, 
+404=EStop,Equipment Emergency Stop Alarm,Equipment Emergency Stop Alarm ,2007,2008,0,, 
+405=IntenralCommsError,Intenral Communications Error,Intenral Communications Error,2009,2010,0,, 
+406=OtherError,Equipment Operation Error,Equipment Operation Error ,2011,2012,0,, 
+
+[COMMON VARIABLES]
+#varTypes DV,SV,EC
+#valTypes I1, I2, I4, I8, U1, U2, U4, U8, F4, F8, A, Bo, Bi, L, J, W
+#id=name, description, units, varType, valType, eventID, private, persistant, min, max, default, 
+#Add your equipment definitions here
+
+# 100 ID range = EquipmentData Variables
+# 100-109 Process 
+100=ProcessTime,Process time,ms,DV,U4,,0,0,,,U4,
+101=StepID,Current processing step,,DV,U2,,0,0,,,U2,
+102=StepTime,Current processing step time,ms,DV,U4,,0,0,,,U4,
+103=ErrorMessage,Error Message,,DV,A,,0,0,,,A,
+104=ICommErrorMessage,RIO Communications Error Message,,DV,A,,0,0,,,A,
+# 110-119 Temp
+110=TemperatureSP,Temperature Set Point,Degrees C,DV,F4,,0,0,F4 0,F4 100,F4,
+111=TemperatureLowSP,Fluid temperature under low setpoint,Degrees C,DV,F4,,0,0,F4 0,F4 100,F4,
+112=TemperatureHighSP,Fluid temperature over high setpoint,Degrees C,DV,F4,,0,0,F4 0,F4 100,F4,
+113=BathTemp,Temperature of the fluid,Degrees C,DV,F4,,0,0,F4 0,F4 100,F4,
+# 120-129 Flow
+120=FlowRate,Fluid flow rate,LPM,DV,F4,,0,0,F4 0,F4 100,F4,
+121=FlowRateHighSP,Fluid flow over high setpoint,LPM,DV,F4,,0,0,F4 0,F4 100,F4,
+122=FlowRateLowSP,Fluid flow under low setpoint,LPM,DV,F4,,0,0,F4 0,F4 100,F4,
+# 130-139 Electircal
+130=Conductivity,Conductivity of the fluid,mS,DV,F4,,0,0,F4 0,F4 200,F4,
+131=VoltageSetPoint,Desired processing voltage,VDC,DV,F4,,0,0,F4 0,F4 40,F4,
+132=VoltageFeedback,Measured processing voltage,VDC,DV,F4,,0,0,F4 0,F4 40,F4,
+133=CurrentSetPoint,Desired processing current,ADC,DV,F4,,0,0,F4 0,F4 150,F4,
+134=CurrentFeedback,Measured processing current,ADC,DV,F4,,0,0,F4 0,F4 150,F4,
+# 140 - 149 Other
+141=AgitatorSpeed,Speed of the agitator,%,DV,F4,,0,0,F4 0,F4 100,F4,
+
+
+# 200 ID range = EquipmentStatus Variables
+# 200-209 System
+200=SystemState,System State,,SV,U1,,0,0,,,U1,
+201=UserLevel,Current User Level,,SV,U1,,0,0,,,U1,
+202=ProcessCount,Number of processes run since last reset,Each,SV,U4,,0,0,,,U4,
+# 210-219 Control
+210=ControlState,Current Control Status,,SV,U1,,0,0,,,U1,
+211=ChillerState,Chiller State,,SV,U1,,0,0,,,U1,
+# 220-219 Recipe
+220=RecipeList,List of recipes,,SV,A,,0,0,,,A, 
+221=SelectedRecipe,Selected recipe ID,,SV,A,,0,0,,,A,
+
+# 300 ID range = EquipmentEquipment Constants
+300=StatusReportInterval,Status Report Interval,ms,EC,U2,,0,1,U2 100,U2 60000,U2 1000,
+
+
+
+
+
