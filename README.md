@@ -6,9 +6,9 @@ In SECS/GEM equipment is characterized in terms of general mechanisms of data va
 
 The development project was for a customer and is proprietary so no code samples are provided. The two files provided are a snippet of a design document that was used as a working specification to define how the existing equipment would be characterized for SECS/GEM and then a snippet of a configuration file that formally defines the equipment for the CIMConnect SECS/GEM software library. This formal definition is based on the design document.
 
-Files: 
-SECS_GEM dictionary specification.docx – design specification snippet
-CIMConnect.txt – SEC/GEM equipment definition snippet for CIMConnect
-SecGemUI.Designer.vb - User Interface example for the machine's Human Interface as layed out in Visual Studio
-SecGemUI.resx - Associated VB resource file
-SecsGemUI.vb - VB Code examle for application specific UI event handlers and associated code
+Files: \
+SECS_GEM dictionary specification.docx – design specification snippet \
+CIMConnect.txt – SEC/GEM equipment definition snippet for CIMConnect \
+SecGemUI.Designer.vb - User Interface example for the machine's Human Interface as layed out in Visual Studio \
+SecGemUI.resx - Associated VB resource file \
+SecsGemUI.vb - VB Code examle for application specific UI event handlers and associated code \
