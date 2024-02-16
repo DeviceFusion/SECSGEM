@@ -9,4 +9,6 @@ The development project was for a customer and is proprietary so no code samples
 Files: 
 SECS_GEM dictionary specification.docx – design specification snippet
 CIMConnect.txt – SEC/GEM equipment definition snippet for CIMConnect
-
+SecGemUI.Designer.vb - User Interface example for the machine's Human Interface as layed out in Visual Studio
+SecGemUI.resx - Associated VB resource file
+SecsGemUI.vb - VB Code examle for application specific UI event handlers and associated code
